@@ -1,0 +1,11 @@
+// PdfController.php
+use Mpdf\Mpdf;
+
+public function generateInvoicePdf($invoiceId)
+{
+    $invoice = Invoice::find($invoiceId);
+
+    $mpdf = new Mpdf();
+    $mpdf->WriteHTML(view('pdf.invoice', compact('invoice'))->render());
+    $mpdf->Output('invoice.pdf', 'D');
+}

@@ -1,0 +1,20 @@
+// InvoiceController.php
+public function create()
+{
+    return view('invoices.create');
+}
+
+public function store(Request $request)
+{
+    // Validate input
+    $validatedData = $request->validate([
+        'date' => 'required|date',
+        'customer_name' => 'required|string',
+        // Add other validation rules here
+    ]);
+
+    // Create invoice
+    $invoice = Invoice::create($validatedData);
+
+    // Redirect to the invoice details page or perform other actions
+}

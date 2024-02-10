@@ -1,0 +1,22 @@
+// Invoice.php
+public function products()
+{
+    return $this->belongsToMany(Product::class, 'invoice_products')->withPivot('quantity');
+}
+
+// Product.php
+public function invoices()
+{
+    return $this->belongsToMany(Invoice::class, 'invoice_products')->withPivot('quantity');
+}
+
+// InvoiceProduct.php (Pivot model)
+public function invoice()
+{
+    return $this->belongsTo(Invoice::class);
+}
+
+public function product()
+{
+    return $this->belongsTo(Product::class);
+}

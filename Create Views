@@ -1,0 +1,27 @@
+@extends('layouts.app')
+
+@section('content')
+    <h1>Invoices</h1>
+    <a href="{{ route('invoices.create') }}" class="btn btn-primary">Create Invoice</a>
+    <table class="table">
+        <!-- Table headers here -->
+        <tbody>
+            @foreach ($invoices as $invoice)
+                <tr>
+                    <!-- Table data here -->
+                    <td>
+                        <a href="{{ route('invoices.edit', $invoice) }}" class="btn btn-sm btn-warning">Edit</a>
+                        <form action="{{ route('invoices.destroy', $invoice) }}" method="POST" style="display: inline;">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
+                        </form>
+                        <a href="{{ route('invoices.pdf', $invoice) }}" class="btn btn-sm btn-secondary">Generate PDF</a>
+                    </td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
+@endsection
+
+php artisan serve

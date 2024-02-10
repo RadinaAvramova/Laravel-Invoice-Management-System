@@ -1,0 +1,14 @@
+php artisan make:migration create_invoices_table
+php artisan make:migration create_products_table
+php artisan make:migration create_invoice_products_table
+
+public function up()
+{
+    Schema::create('invoices', function (Blueprint $table) {
+        $table->id();
+        $table->date('date');
+        $table->string('customer_name');
+        // Add other invoice fields here
+        $table->timestamps();
+    });
+}

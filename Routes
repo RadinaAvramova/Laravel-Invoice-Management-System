@@ -1,0 +1,13 @@
+use App\Http\Controllers\InvoiceController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\PdfController;
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::resource('invoices', InvoiceController::class);
+Route::resource('products', ProductController::class);
+
+// Route for generating PDFs
+Route::get('/invoices/{invoice}/pdf', [PdfController::class, 'generateInvoicePdf'])->name('invoices.pdf');

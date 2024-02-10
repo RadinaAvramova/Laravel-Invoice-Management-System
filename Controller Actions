@@ -1,0 +1,35 @@
+php artisan make:controller InvoiceController
+php artisan make:controller ProductController
+php artisan make:controller PdfController
+
+
+public function index()
+{
+    $invoices = Invoice::all();
+    return view('invoices.index', compact('invoices'));
+}
+
+public function create()
+{
+    return view('invoices.create');
+}
+
+public function store(Request $request)
+{
+    // Validation and invoice creation code here
+}
+
+public function edit(Invoice $invoice)
+{
+    return view('invoices.edit', compact('invoice'));
+}
+
+public function update(Request $request, Invoice $invoice)
+{
+    // Validation and invoice update code here
+}
+
+public function destroy(Invoice $invoice)
+{
+    // Invoice deletion code here
+}
